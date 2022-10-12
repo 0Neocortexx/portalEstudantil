@@ -1,0 +1,2 @@
+Lembrar sempre de colocar os parametros dos dados em json corretamente, se não ele não insere 
+no banco e nem aponta erro!

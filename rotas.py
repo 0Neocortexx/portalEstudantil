@@ -8,6 +8,9 @@ def home():
 
     # Tentativa de um cadastro simples
 
+# teste da rota cadastro: curl -d '{"email": "inseridoatravesdocurl", "nome": "test_user", "senha": "test_pass", "objetivo": "test_objective"}' -X POST -H "Content-Type:application/json" http://localhost:5000/cadastro
+
+
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
     if request.method == 'GET': # Se a requisição for GET

@@ -34,6 +34,25 @@ def cadastro():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('login.html')
+    if request.method == 'GET':
+        return render_template('login.html')
+    else:
+        resposta = jsonify({"resultado": "ok", "detalhes": "ola"})
+        dados = request.get_json(force=True)
+        email = dados['email']
+        senha = dados['senha']
+        usuario_encontrado = Usuario.query.filter_by(email=email, senha=senha).first()
+        if usuario_encontrado is not None:
+            # criar a json web token (JWT)
+            access_token = create_access_token(identity=login)
+
+            # retornar
+            resposta =  jsonify({"resultado":"ok", "detalhes":access_token}) 
+        else:
+            resposta = jsonify({"resultado": "erro", "detalhes": "login e/ou senha inválido(s)"})        
+            # adicionar cabeçalho de liberação de origem
+        resposta.headers.add("Access-Control-Allow-Origin", "*")
+        return resposta  # responder!
+
 
 app.run(debug=True, host="0.0.0.0")

@@ -17,7 +17,7 @@ def cadastro():
         return render_template('cadastro.html') # Retorna o Template do cadastro
     else:  # Se não, ele executa o procedimento do cadastro
         # Recebe os dados do front-end atraves do Json
-        resposta = jsonify({"resultado": "ok", "detalhes": "ola"})
+        resposta = jsonify({"resultado": "ok", "detalhes": "ok"})
         dados = request.get_json() #o (force=True) dispensa o Content-Type na requisição no js
         print(dados)
         try: # Tenta executar a operação de inserir o usuário no banco
@@ -37,17 +37,19 @@ def login():
     if request.method == 'GET':
         return render_template('login.html')
     else:
-        resposta = jsonify({"resultado": "ok", "detalhes": "ola"})
+        resposta = jsonify({"resultado": "ok", "detalhes": "ok"})
         dados = request.get_json(force=True)
         email = dados['email']
-        senha = dados['senha']
-        usuario_encontrado = Usuario.query.filter_by(email=email, senha=senha).first()
+        usuario_encontrado = Usuario.query.filter_by(email=email).first()
+
         if usuario_encontrado is not None:
+
             # criar a json web token (JWT)
-            access_token = create_access_token(identity=login)
+            access_token = create_access_token(identity=email)
 
             # retornar
-            resposta =  jsonify({"resultado":"ok", "detalhes":access_token}) 
+            resposta =  jsonify({"resultado":"ok", "detalhes":access_token})
+
         else:
             resposta = jsonify({"resultado": "erro", "detalhes": "login e/ou senha inválido(s)"})        
             # adicionar cabeçalho de liberação de origem

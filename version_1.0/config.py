@@ -1,3 +1,12 @@
+""" Lista de instalações das bibliotecas:
+ - pip install flask
+ - pip install flask_cors
+ - pip install flask_sqlalchemy
+ - pip install flask_session
+ - pip install flask_jwt_extended
+ -
+"""
+
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from flask import *

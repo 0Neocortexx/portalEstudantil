@@ -75,5 +75,7 @@ def inserir_conteudo():
         return render_template('inserir_conteudo.html')
     else:
         resposta = jsonify({"resultado":"ok", "detalhes": "ok"})
+        dados = request.get_json(Force = True)
+        conteudo = Conteudo(titulo = dados["titulo"], materia = dados["materia"], usuario =dados["usuario"])
 
 app.run(debug=True, host="0.0.0.0")

@@ -18,11 +18,11 @@ def cadastro():
         dados = request.get_json() #o (force=True) dispensa o Content-Type na requisição no js
         user = Usuario(email =  dados['email'],nome = dados['nome'],senha = dados['senha'], objetivo = dados['objetivo'])
         user.senha = criptografar_sen(user.senha)
-        print(dados)
         try: # Tenta executar a operação de inserir o usuário no banco
-            new = Usuario(**dados) # Cria uma nova pessoa a partir dos dados
-            db.session.add(new) # Adiciona a pessoa no banco
+             # Cria uma nova pessoa a partir dos dados
+            db.session.add(user) # Adiciona a pessoa no banco
             db.session.commit() # Dá o commit no banco
+            print(user)
             print('Usuário cadastrado!')
             resposta = jsonify({'Resultado': 'sucesso', 'Detalhes': 'ok'}) # Dá resposta caso o usuário for inserido
         # Caso a operação falhe
@@ -51,8 +51,7 @@ def login(): # Criar a função da rota
         # Faz uma consulta no banco para saber se tem outro email igual
         usuario_encontrado = Usuario.query.filter_by(email=email).first()
         # Se não encontrar emails parecidos
-
-        if login == True and usuario_encontrado is not None:
+        if usuario_encontrado is not None and login == True:
             # criar a json web token (JWT) usando o email 
             access_token = create_access_token(identity=email)
             # Retorna a (JWT) em json
@@ -69,5 +68,12 @@ def login(): # Criar a função da rota
         # Retorna resposta
         return resposta  # responder!
 
+
+@app.route('/inserir_conteudo', methods = ['POST', 'GET'])
+def inserir_conteudo():
+    if request.method == 'GET':
+        return render_template('inserir_conteudo.html')
+    else:
+        resposta = jsonify({"resultado":"ok", "detalhes": "ok"})
 
 app.run(debug=True, host="0.0.0.0")

@@ -13,6 +13,7 @@ class Usuario(db.Model):
         return {
             "nome": self.nome,
             "email": self.email,
+            "senha": self.senha,
             "objetivo": self.objetivo
         }
 
@@ -20,31 +21,34 @@ class Conteudo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     titulo = db.Column(db.String(254), nullable=False)
     materia = db.Column(db.String(254), nullable=False)
+
     usuario_id = db.Column(db.String(254), db.ForeignKey(Usuario.email))
     usuario = db.relationship("Usuario")
 
     def __str__(self):
-        return f'ID: {self.id},Titulo: {self.titulo}, Matéria: {self.materia}, ID do usuário: {self.usuario_id}, Nome do usuario: {self.usuario.nome}'
+        return f'ID: {self.id},Titulo: {self.titulo}, Matéria: {self.materia}, \
+            ID do usuário: {self.usuario_id}, Nome do usuario: {self.usuario.nome}, Email do usuário: {self.usuario.nome}'
 
     def json(self):
         return {
             "id": self.id,
             "titulo": self.titulo,
             "materia": self.materia,
+
             "usuario_id": self.usuario_id,
-            "usuario" : self.usuario.nome.json()
+            "usuario_email": self.usuario.email,
+            "usuario_nome" : self.usuario.nome
         }
 
 class Comentarios(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-
-    comentario = db.Column(db.String, nullable=False)
-
-    usuario_id = db.Column(db.String(254), db.ForeignKey(Usuario.id))
-    usuario = db.relationship("Usuario")
-    
     conteudo_id = db.Column(db.Integer, db.ForeignKey(Conteudo.id))
     conteudo = db.relationship("Conteudo")
+
+    id = db.Column(db.Integer, primary_key=True)
+    comentario = db.Column(db.String, nullable=False)
+
+    usuario_id = db.Column(db.String(254), db.ForeignKey(Usuario.email))
+    usuario = db.relationship("Usuario")
     
     def __str__(self):
         return f'ID do comentário: {self.id}, Comentário: {self.comentario}, ID do conteudo: {self.conteudo.id}, \
@@ -53,8 +57,8 @@ class Comentarios(db.Model):
     def json(self):
         return {
             "conteudo_id": self.conteudo.id,
-            "comentario_id": self.id,
 
+            "comentario_id": self.id,
             "comentario": self.comentario,
 
             "usuario_email": self.usuario.email,
@@ -63,38 +67,45 @@ class Comentarios(db.Model):
 
 class Registro(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-
     dataAcesso = db.Column(db.Date)
 
-    usuario_id = db.Column(db.String(254), db.ForeignKey(Usuario.id))
+    usuario_id = db.Column(db.String(254), db.ForeignKey(Usuario.email))
     usuario = db.relationship("Usuario")
 
 
     def __str__(self):
-        return f'ID do registro: {self.id}, Usuário: {self.usuario.nome}, data do ultimo acesso: {self.dataAcesso}'
+        return f'ID do registro: {self.id}, Usuário: {self.usuario.email}, Data do ultimo acesso: {self.dataAcesso}'
     
     def json(self):
         return {
-            "idRegistro": self.id,
-            "dataAcesso": self.dataAcesso,
-            "usuario": self.usuario
+            "registro_id": self.id,
+            "data_acesso": self.dataAcesso,
+            "usuario_email": self.usuario.email
         }
 
 class Avaliacao(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    conteudo = db.Column(db.Integer, db.ForeignKey(Conteudo.id))
-    usuario = db.Column(db.String(254), db.ForeignKey(Usuario.email))
     nota = db.Column(db.Integer, nullable=False)
 
+    conteudo = db.Column(db.Integer, db.ForeignKey(Conteudo.id))
+    conteudo = db.relationship("Conteudo")
+
+    usuario = db.Column(db.String(254), db.ForeignKey(Usuario.email))
+    usuario = db.relationship("Usuario")
+
     def __str__(self):
-        return f'ID da avaliação: {self.id}, Conteudo avaliado: {self.conteudo}, usuário: {self.usuario}, nota: {self.nota}'
+        return f'ID da avaliação: {self.id}, nota: {self.nota}, Email do usuário: {self.usuario.email}, \
+           Nome do usuário: {self.usuario.nome} ,Conteudo avaliado: {self.conteudo.titulo}'
 
     def json(self):
         return {
-            "idAvaliacao": self.id,
-            "conteudo": self.conteudo,
-            "usuario": self.usuario,
-            "nota": self.nota
+            "avaliacao_id": self.id,
+            "nota": self.nota,
+
+            "conteudo": self.conteudo.titulo,
+
+            "usuario_email": self.usuario.email,
+            "usuario_nome": self.usuario.nome
         }
 
 # Funções 

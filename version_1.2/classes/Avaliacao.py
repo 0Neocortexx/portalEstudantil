@@ -1,4 +1,6 @@
 from config import *
+from classes.Conteudo import *
+from classes.Usuario import *
 
 class Avaliacao(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -7,7 +9,7 @@ class Avaliacao(db.Model):
     conteudo = db.Column(db.Integer, db.ForeignKey(Conteudo.id))
     conteudo = db.relationship("Conteudo")
 
-    usuario = db.Column(db.String(254), db.ForeignKey(Usuario.email))
+    usuario_email = db.Column(db.String(254), db.ForeignKey(Usuario.email))
     usuario = db.relationship("Usuario")
 
     def __str__(self):

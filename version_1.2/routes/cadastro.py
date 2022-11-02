@@ -1,4 +1,6 @@
 from config import *
+from classes.Usuario import *
+from functions.criptografar_senha import *
 
 # Tentativa de um cadastro simples
 # teste da rota cadastro: curl -d '{"email": "inseridoatravesdocurl", "nome": "test_user", "senha": "test_pass", "objetivo": "test_objective"}' -X POST -H "Content-Type:application/json" http://localhost:5000/cadastro

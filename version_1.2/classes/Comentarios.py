@@ -1,4 +1,6 @@
 from config import *
+from classes.Usuario import *
+from classes.Conteudo import *
 
 class Comentarios(db.Model):
     conteudo_id = db.Column(db.Integer, db.ForeignKey(Conteudo.id))
@@ -7,7 +9,7 @@ class Comentarios(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     comentario = db.Column(db.String, nullable=False)
 
-    usuario_id = db.Column(db.String(254), db.ForeignKey(Usuario.email))
+    usuario_email = db.Column(db.String(254), db.ForeignKey(Usuario.email))
     usuario = db.relationship("Usuario")
     
     def __str__(self):

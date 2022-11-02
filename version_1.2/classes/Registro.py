@@ -1,10 +1,11 @@
 from config import *
+from classes.Usuario import *
 
 class Registro(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     dataAcesso = db.Column(db.Date)
 
-    usuario_id = db.Column(db.String(254), db.ForeignKey(Usuario.email))
+    usuario_email = db.Column(db.String(254), db.ForeignKey(Usuario.email))
     usuario = db.relationship("Usuario")
 
 

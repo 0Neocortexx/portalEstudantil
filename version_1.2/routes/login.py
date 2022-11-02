@@ -1,5 +1,6 @@
 from config import *
-from classes import usuario
+from classes.Usuario import *
+from functions.verificar_senha import *
 
 @app.route('/login', methods=['GET', 'POST'])
 def login(): # Criar a função da rota

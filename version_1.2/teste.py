@@ -8,3 +8,8 @@ def get_usuario(email: str):
 if __name__=="__main__":
     senha = get_usuario('inseridoatravesdocurl')
     print(senha)"""
+
+"""from functions.get_username import *
+
+nome = get_nome('jonas@g.c')
+print(nome)"""

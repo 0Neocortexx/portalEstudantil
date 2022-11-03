@@ -17,6 +17,7 @@ function login() {
         data: dados, // Dados enviados
         // Se os dados forem enviados
         success: function(retorno) { // Vai criar uma função
+                console.log(retorno)
             if (retorno.resultado == "ok") { // se o resultado for positivo
                 sessionStorage.setItem('email',retorno.email); 
                 sessionStorage.setItem('nome',retorno.nome);

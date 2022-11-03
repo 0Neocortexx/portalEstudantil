@@ -19,6 +19,7 @@ function login() {
         success: function(retorno) { // Vai criar uma função
             if (retorno.resultado == "ok") { // se o resultado for positivo
                 sessionStorage.setItem('email',retorno.email); 
+                sessionStorage.setItem('nome',retorno.nome);
                 sessionStorage.setItem('jwt',retorno.detalhes);
                 alert('Login relizado com sucesso!');
                 window.location.assign('/');

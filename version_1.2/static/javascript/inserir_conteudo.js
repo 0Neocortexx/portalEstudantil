@@ -5,7 +5,7 @@ function inserirConteudo() {
     cont_conteudo = document.getElementById('conteudoTexto').value;
     cont_fontes = document.getElementById('conteudoReferencias').value;
      
-    var dados = JSON.stringify({usuario: cont_usuario, materia: cont_materia, titulo: cont_materia, conteudo: cont_conteudo, fontes: cont_fontes})
+    var dados = JSON.stringify({usuario: cont_usuario, materia: cont_materia, titulo: cont_titulo, conteudo: cont_conteudo, fontes: cont_fontes})
 
     console.log(dados)
     $.ajax({
@@ -16,7 +16,7 @@ function inserirConteudo() {
         data: dados,
         success: function() {
             alert("Dados enviados com sucesso!");
-            window.location.assign('/index');
+            window.location.assign('/');
         },
         error: function() {
             alert("Erro ao contatar backend!")

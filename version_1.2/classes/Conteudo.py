@@ -14,7 +14,7 @@ class Conteudo(db.Model):
     def __str__(self):
         return f'ID: {self.id},Titulo: {self.titulo}, Matéria: {self.materia}, \
             Conteudo: {self.conteudo}, Fontes: {self.fontes} \
-            Email do usuário: {self.usuario_id}, Nome do usuario: {self.usuario.nome}'
+            Email do usuário: {self.usuario_email}'
 
     def json(self):
         return {
@@ -24,6 +24,5 @@ class Conteudo(db.Model):
             "conteudo": self.conteudo,
             "fontes": self.fontes,
 
-            "usuario_email": self.usuario_id,
-            "usuario_nome" : self.usuario.nome
+            "usuario_email": self.usuario_id
         }

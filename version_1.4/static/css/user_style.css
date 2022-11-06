@@ -1,0 +1,26 @@
+.bloco { 
+    width: 50%; 
+    margin: auto; 
+    margin-top: 4%;
+    margin-bottom: 4%;
+    position: relative; 
+    text-align: center;
+    padding: 2em; 
+}
+
+.ico-perfil{
+    padding: 1em;
+    height: 156px; 
+    width: 156px; 
+    border: 2px solid white;
+}
+
+.botao {
+    text-decoration: none; 
+    color: white; 
+    border: 1px solid white; 
+    padding: 0.4em; 
+    border-radius: 3px;}
+.botao:hover{
+    background-color: turquoise;
+}

@@ -3,7 +3,6 @@ from classes.Conteudo import *
 
 # Teste da rota curl -d '{"email": "inseridoatravesdocurl", "materia":"portugues", "titulo": "tartarugas matam", "conteudo": "tartarugas realmente matam? descubra no proximo bloco", "fontes": "biririnha"}' -X POST -H "Content-Type:application/json" http://localhost:5000/inserir_conteudo
 
-
 @app.route('/inserir_conteudo', methods = ['POST', 'GET'])
 def inserir_conteudo():
     if request.method == 'GET':

@@ -5,6 +5,7 @@ function cadastrar(){
     var cad_password = document.getElementById('cadastroSenha').value;
     var cad_objective = document.getElementById('cadastroObjetivo').value;
     var checkbox = document.getElementById('cadastroTermos').checked;
+
     var filtragem = (cad_email + cad_username + cad_objective + cad_password).toLowerCase()
     var filterlink = (cad_username + cad_password + cad_objective).toLowerCase()
 
@@ -14,12 +15,12 @@ function cadastrar(){
     } else if (filterlink.includes('www.' || filterlink.includes('.com') || filterlink.includes('http') || filterlink.includes('https://') || filterlink.includes('.br')) ) { 
         alert('Não insere link onde não pode seu pilantra #### BLOQUEIO ANTI PAULO');
         document.location.reload(true);
-    } else if(filtragem.includes('<') == true || filtragem.includes('/') == true || filtragem.includes('script') == true || filtragem.includes('alert') || filtragem.includes('drop'))  {
+    } else if(filtragem.includes('<') == true || filtragem.includes('/') == true || filtragem.includes('script') == true || filtragem.includes('alert') || filtragem.includes('drop') || filtragem.includes('&gt') || filtragem.includes('&lt')) {
         alert('Ta inserindo bosta ai ne {PAULO SAI FORA} #### PROTEÇÃO ANTI PAULO ATIVADA');
         window.location.reload(true);
     } else if(checkbox == false) {
         alert('Concorda com os termos ai miseravi')
-    } else {    // Resgatar os dados do HTML
+    } else {    
     // Criar uma variável que recebe os dados em JSON
     var data = JSON.stringify({email: cad_email, nome: cad_username, senha: cad_password, objetivo: cad_objective})
 
@@ -139,6 +140,7 @@ function exibirDados() {
     document.getElementById('perfilNome').innerHTML = "Nome: " + sessionStorage.getItem('nome');
     document.getElementById('perfilEmail').innerHTML = "Email: " + sessionStorage.getItem('email');
 }
+
 function sair() {
     sessionStorage.clear();
     window.location.assign('/');
@@ -152,4 +154,4 @@ function exibirBotao() {
         document.getElementById('botaoPerfil').style.display = 'inherit';
         document.getElementById('botaoInserir').style.display = 'inherit';
     }
-    }
+}

@@ -6,8 +6,13 @@ function cadastrar(){
     var cad_objective = document.getElementById('cadastroObjetivo').value;
     var checkbox = document.getElementById('cadastroTermos').checked;
     var filtragem = (cad_email + cad_username + cad_objective + cad_password).toLowerCase()
+    var filterlink = (cad_username + cad_password + cad_objective).toLowerCase()
+
     if (cad_email == '' || cad_username == '' || cad_password == '' || cad_objective == '') {
         alert('Dá de fazer login vazio não cria {BLOQUEIO ANTI PAULO ATIVADO}')
+        document.location.reload(true);
+    } else if (filterlink.includes('www.' || filterlink.includes('.com') || filterlink.includes('http') || filterlink.includes('https://')) ) { 
+        alert('Não insere link onde não pode seu pilantra #### BLOQUEIO ANTI PAULO');
         document.location.reload(true);
     } else if(filtragem.includes('<') == true || filtragem.includes('/') == true || filtragem.includes('script') == true || filtragem.includes('alert') || filtragem.includes('drop'))  {
         alert('Ta inserindo bosta ai ne {PAULO SAI FORA} #### PROTEÇÃO ANTI PAULO ATIVADA');
@@ -40,11 +45,16 @@ function login() {
     // Pega os dados do formulario
     var log_email = document.getElementById('loginEmail').value;
     var log_senha = document.getElementById('loginSenha').value;
-    var filtragem = (log_email + log_senha).toLowerCase()
+    var filtragem = (log_email + log_senha).toLowerCase();
+    var filterlink = ( log_email + log_senha).toLowerCase();
+
     if (log_email == '' || log_senha == '') {
         alert('Dá de fazer login vazio não cria {BLOQUEIO ANTI PAULO ATIVADO}')
         document.location.reload(true);
-    } else if(filtragem.includes('<') == true || filtragem.includes('/') == true || filtragem.includes('script') == true || filtragem.includes('alert') || filtragem.includes('drop'))  {
+    } else if (filterlink.includes('www.' || filterlink.includes('.com') || filterlink.includes('http') || filterlink.includes('https://')) ) { 
+        alert('Não insere link onde não pode seu pilantra #### BLOQUEIO ANTI PAULO');
+        document.location.reload(true);
+    }else if(filtragem.includes('<') == true || filtragem.includes('/') == true || filtragem.includes('script') == true || filtragem.includes('alert') || filtragem.includes('drop'))  {
         alert('ta inserindo bosta ai ne {PAULO SAI FORA} #### PROTEÇÃO ANTI PAULO ATIVADA');
         window.location.reload(true);
     } else { 
@@ -85,9 +95,13 @@ function inserirConteudo() {
     var checkbox = document.getElementById('conteudoConcordar').checked;
 
     var filtragem = (cont_materia + cont_titulo + cont_conteudo + cont_fontes).toLowerCase()
+    var filterlink = ( cont_titulo + cont_conteudo).toLowerCase();
 
         if (cont_materia == '' || cont_titulo == '' || cont_conteudo == '' || cont_fontes == '') {
             alert('Dá de cadastrar conteudo vazio não cria {BLOQUEIO ANTI PAULO ATIVADO}');
+            document.location.reload(true);
+        } else if (filterlink.includes('www.' || filterlink.includes('.com') || filterlink.includes('http') || filterlink.includes('https://')) ) { 
+            alert('Não insere link onde não pode seu pilantra #### BLOQUEIO ANTI PAULO');
             document.location.reload(true);
         } else if(filtragem.includes('<') == true || filtragem.includes('/') == true || filtragem.includes('script') == true || filtragem.includes('alert') || filtragem.includes('drop'))  {
             alert('ta inserindo bosta ai ne {PAULO SAI FORA} #### PROTEÇÃO ANTI PAULO ATIVADA');

@@ -11,7 +11,7 @@ function cadastrar(){
     if (cad_email == '' || cad_username == '' || cad_password == '' || cad_objective == '') {
         alert('Dá de fazer login vazio não cria {BLOQUEIO ANTI PAULO ATIVADO}')
         document.location.reload(true);
-    } else if (filterlink.includes('www.' || filterlink.includes('.com') || filterlink.includes('http') || filterlink.includes('https://')) ) { 
+    } else if (filterlink.includes('www.' || filterlink.includes('.com') || filterlink.includes('http') || filterlink.includes('https://') || filterlink.includes('.br')) ) { 
         alert('Não insere link onde não pode seu pilantra #### BLOQUEIO ANTI PAULO');
         document.location.reload(true);
     } else if(filtragem.includes('<') == true || filtragem.includes('/') == true || filtragem.includes('script') == true || filtragem.includes('alert') || filtragem.includes('drop'))  {
@@ -51,7 +51,7 @@ function login() {
     if (log_email == '' || log_senha == '') {
         alert('Dá de fazer login vazio não cria {BLOQUEIO ANTI PAULO ATIVADO}')
         document.location.reload(true);
-    } else if (filterlink.includes('www.' || filterlink.includes('.com') || filterlink.includes('http') || filterlink.includes('https://')) ) { 
+    } else if (filterlink.includes('www.' || filterlink.includes('.com') || filterlink.includes('http') || filterlink.includes('https://') || filterlink.includes('.br')) ) { 
         alert('Não insere link onde não pode seu pilantra #### BLOQUEIO ANTI PAULO');
         document.location.reload(true);
     }else if(filtragem.includes('<') == true || filtragem.includes('/') == true || filtragem.includes('script') == true || filtragem.includes('alert') || filtragem.includes('drop'))  {
@@ -100,7 +100,7 @@ function inserirConteudo() {
         if (cont_materia == '' || cont_titulo == '' || cont_conteudo == '' || cont_fontes == '') {
             alert('Dá de cadastrar conteudo vazio não cria {BLOQUEIO ANTI PAULO ATIVADO}');
             document.location.reload(true);
-        } else if (filterlink.includes('www.' || filterlink.includes('.com') || filterlink.includes('http') || filterlink.includes('https://')) ) { 
+        } else if (filterlink.includes('www.' || filterlink.includes('.com') || filterlink.includes('http') || filterlink.includes('https://') || filterlink.includes('.br')) ) { 
             alert('Não insere link onde não pode seu pilantra #### BLOQUEIO ANTI PAULO');
             document.location.reload(true);
         } else if(filtragem.includes('<') == true || filtragem.includes('/') == true || filtragem.includes('script') == true || filtragem.includes('alert') || filtragem.includes('drop'))  {

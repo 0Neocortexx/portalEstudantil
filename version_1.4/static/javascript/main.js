@@ -100,15 +100,23 @@ function inserirConteudo() {
         if (cont_materia == '' || cont_titulo == '' || cont_conteudo == '' || cont_fontes == '') {
             alert('Dá de cadastrar conteudo vazio não cria {BLOQUEIO ANTI PAULO ATIVADO}');
             document.location.reload(true);
-        } else if (filterlink.includes('www.' || filterlink.includes('.com') || filterlink.includes('http') || filterlink.includes('https://') || filterlink.includes('.br')) ) { 
+        } 
+
+        else if (filterlink.includes('www.' || filterlink.includes('.com') || filterlink.includes('http') || filterlink.includes('https://') || filterlink.includes('.br')) ) { 
             alert('Não insere link onde não pode seu pilantra #### BLOQUEIO ANTI PAULO');
             document.location.reload(true);
-        } else if(filtragem.includes('<') == true || filtragem.includes('/') == true || filtragem.includes('script') == true || filtragem.includes('alert') || filtragem.includes('drop'))  {
+        } 
+        
+        else if(filterlink.includes('<') == true || filterlink.includes('/') == true || filterlink.includes('script') == true || filterlink.includes('alert') || filterlink.includes('drop'))  {
             alert('ta inserindo bosta ai ne {PAULO SAI FORA} #### PROTEÇÃO ANTI PAULO ATIVADA');
             window.location.reload(true);
-        } else if(checkbox == false) {
+        } 
+        
+        else if(checkbox == false) {
             alert('Concorda com os termos ai miseravi, vai espalhar fake news nao')
-        } else {  
+        } 
+        
+        else {  
             // Dados em JSON
             var dados = JSON.stringify({usuario: cont_usuario, materia: cont_materia, titulo: cont_titulo, conteudo: cont_conteudo, fontes: cont_fontes})
                 $.ajax({
@@ -135,3 +143,13 @@ function sair() {
     sessionStorage.clear();
     window.location.assign('/');
 }
+
+
+function exibirBotao() {
+    if(sessionStorage.getItem('email') == undefined){
+        document.getElementById('botaoCadastro').style.display = 'inherit';
+    } else {
+        document.getElementById('botaoPerfil').style.display = 'inherit';
+        document.getElementById('botaoInserir').style.display = 'inherit';
+    }
+    }

@@ -34,7 +34,7 @@ a = 'cacho rro'
 b = a.replace(filtro,2 '')
 print(b)"""
 
-from classes.Conteudo import *
+"""from classes.Conteudo import *
 
 conteudos = db.session.query(Conteudo).all()
 conteudo_json =  [ x.json() for x in conteudos]
@@ -42,4 +42,4 @@ for i in conteudo_json:
     print(i)
 resposta = jsonify(i)
 resposta.headers.add("Access-Control-Allow-Origin", "*")
-return resposta
+return resposta"""

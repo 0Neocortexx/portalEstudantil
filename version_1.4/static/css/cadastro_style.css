@@ -16,3 +16,9 @@
 .cadastro-exists:hover{
     background-color: rgb(21, 108, 148);
 }
+
+@media screen and (max-width : 1024px){
+    .form-cadastro{
+        width: 85%;
+    }
+}

@@ -5,6 +5,7 @@ function cadastrar(){
     var cad_password = document.getElementById('cadastroSenha').value;
     var cad_objective = document.getElementById('cadastroObjetivo').value;
     var checkbox = document.getElementById('cadastroTermos').checked;
+    var meuip = sessionStorage.getItem('meuip');
 
     var filtragem = (cad_email + cad_username + cad_objective + cad_password).toLowerCase()
     var filterlink = (cad_username + cad_password + cad_objective).toLowerCase()
@@ -26,7 +27,7 @@ function cadastrar(){
 
     // Enviar os dados para o backend usando o ajax
     $.ajax({
-        url: 'http://localhost:5000/cadastro',
+        url: `http://${meuip}:5000/cadastro`,
         type: 'POST',
         contentType: 'application/json',
         dataType: 'json',
@@ -48,6 +49,7 @@ function login() {
     var log_senha = document.getElementById('loginSenha').value;
     var filtragem = (log_email + log_senha).toLowerCase();
     var filterlink = ( log_email + log_senha).toLowerCase();
+    var meuip = sessionStorage.getItem('meuip');
 
     if (log_email == '' || log_senha == '') {
         alert('Dá de fazer login vazio não cria {BLOQUEIO ANTI PAULO ATIVADO}')
@@ -63,7 +65,7 @@ function login() {
         var dados = JSON.stringify({email: log_email, senha: log_senha})
         // Faz o envio via AJAX
         $.ajax({
-            url: 'http://localhost:5000/login', // Chama a rota de login
+            url: `http://${meuip}:5000/login`, // Chama a rota de login
             type: 'POST', // Requisição do tipo POST
             contentType: 'text/plain', // Content-type
             dataType: 'json', // Tipo de dado enviado (Em JSON)
@@ -94,6 +96,7 @@ function inserirConteudo() {
     var cont_conteudo = document.getElementById('conteudoTexto').value;
     var cont_fontes = document.getElementById('conteudoReferencias').value;
     var checkbox = document.getElementById('conteudoConcordar').checked;
+    var meuip = sessionStorage.getItem('meuip');
 
     var filtragem = (cont_materia + cont_titulo + cont_conteudo + cont_fontes).toLowerCase()
     var filterlink = ( cont_titulo + cont_conteudo).toLowerCase();
@@ -121,7 +124,7 @@ function inserirConteudo() {
             // Dados em JSON
             var dados = JSON.stringify({usuario: cont_usuario, materia: cont_materia, titulo: cont_titulo, conteudo: cont_conteudo, fontes: cont_fontes})
                 $.ajax({
-                url: 'http://localhost:5000/inserir_conteudo',
+                url: `http://${meuip}:5000/inserir_conteudo`,
                 type: 'POST',
                 contentType: 'application/json',
                 dataType: 'json',

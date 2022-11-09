@@ -1,6 +1,7 @@
 function exibirFeed() {
+    var meuip = sessionStorage.getItem('meuip');
     $.ajax({
-        url: 'http://localhost:5000/feedlistar',
+        url: `http://${meuip}:5000/feedlistar`,
         method: 'GET',
         dataType: 'json', // os dados são recebidos no formato json
         success: listar, // chama a função listar para processar o resultado

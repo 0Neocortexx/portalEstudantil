@@ -11,7 +11,8 @@ function exibirFeed() {
     });
 
     function listar(resposta) {
-        for (let i = resposta.length-1; i > 0; i--) {
+        for (let i = resposta.length-1; i >= 0; i--) {
+            console.log('Ta pedindo')
             document.getElementById('conteudo').innerHTML += 
             `<div class="border border-info bg-dark bg-gradient p-3 rounded text-center text-light">
                 <p>Matéria:  ${resposta[i].materia}</p> 

@@ -111,7 +111,7 @@ function inserirConteudo() {
             document.location.reload(true);
         } 
         
-        else if(filterlink.includes('<') == true || filterlink.includes('/') == true || filterlink.includes('script') == true || filterlink.includes('alert') || filterlink.includes('drop'))  {
+        else if(filtragem.includes('<') == true || filterlink.includes('/') == true || filtragem.includes('script') == true || filtragem.includes('alert') || filtragem.includes('drop') || filtragem.includes('js') || filtragem.includes('select'))  {
             alert('ta inserindo bosta ai ne {PAULO SAI FORA} #### PROTEÇÃO ANTI PAULO ATIVADA');
             window.location.reload(true);
         } 

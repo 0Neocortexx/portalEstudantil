@@ -3,6 +3,7 @@ from model.usuario import *
 from functions.verificar_senha import *
 from functions.get_usuario import *
 
+# Teste da rota: curl -d '{"email":"inseridoatravesdocurl","senha":"test_pass"}' -X POST -H "Content-Type:application/json" http://localhost:5000/login
 @app.route('/login', methods=['GET', 'POST'])
 def login(): # Criar a função da rota
     # Se a requisição for GET 

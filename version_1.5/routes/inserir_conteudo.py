@@ -11,13 +11,11 @@ def inserir_conteudo():
         resposta = jsonify({"resultado":"ok", "detalhes": "ok"})
         dados = request.get_json()
         conteudo = Conteudo(usuario_email = dados["usuario"],materia = dados["materia"] ,titulo = dados["titulo"], conteudo = dados["conteudo"], fontes = dados["fontes"])
-        print(conteudo)
         try: # Tenta executar a operação de inserir o usuário no banco
              # Cria uma nova pessoa a partir dos dados
             db.session.add(conteudo) # Adiciona a pessoa no banco
             db.session.commit() # Dá o commit no banco
-            print(conteudo)
-            print('Usuário cadastrado!')
+            print('Conteudo cadastrado!')
             resposta = jsonify({'Resultado': 'sucesso', 'Detalhes': 'ok'}) # Dá resposta caso o usuário for inserido
         # Caso a operação falhe
         except Exception as e:  # Transforma o erro na letra 'e'

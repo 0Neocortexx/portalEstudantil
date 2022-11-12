@@ -1,0 +1,24 @@
+.form-cadastro {
+    width: 40%;
+    margin: auto;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    padding: 2em;
+}
+.btn:hover {
+    border: 1px solid black;
+}
+.cadastro-exists {
+    text-decoration: none;
+    border-radius: 6px; 
+    padding: 0.5em;
+}
+.cadastro-exists:hover{
+    background-color: rgb(21, 108, 148);
+}
+
+@media screen and (max-width : 1024px){
+    .form-cadastro{
+        width: 85%;
+    }
+}

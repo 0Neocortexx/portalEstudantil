@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Apoio Estudantil: Cadastre-se</title>
+    
+    <!-- METAS -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Jonathan Emmanuel De Oliveira , Lucas Andrei Cancelier Marin, Ana Julia Bennertz, Aline Scholl Santos">
+  	<meta name="keywords" content="estudantil,acadêmico,suporte,conteúdo,cadastro">
+  	<meta name="description" content="Cadastro para o site de apoio estudantil.">
+    
+    <!-- LINKS & IMPORTS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  	<link rel="shortcut icon" href="../static/images/icon2.ico">
+    <link rel="stylesheet" href="../static/css/cadastro_style.css">
+    <link rel="stylesheet" href="../static/css/navbarfooter.css">
+
+</head>
+<body>
+    <!-- NAVBAR -->
+      <nav class="navbar navbar-expand-lg bg-dark ">
+      
+        <!-- CONTEINER FLUIDO -->
+        <div class="container-fluid">
+
+        <!-- IMAGEM HOME -->
+          <a class="navbar-brand" href="/"><img src="../static/images/logo_nav.ico" alt="Icone da página"></a>
+        <!-- END IMAGEM HOME -->
+
+        <!-- RESPONSIVE BUTTON -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- END RESPONSIVE BUTTON -->
+
+        <!-- ITEMS NAVBAR -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                  <a class="nav-link active text-light" aria-current="page" href="/">Home</a>
+                </li>
+
+            </ul>
+          </div>
+          <!-- END ITEMS NAVBAR -->
+        </div>
+        <!-- END CONTEINER FLUIDO -->
+      </nav>
+      <!-- END NAVBAR -->
+
+
+    <div class="form-cadastro bg-dark bg-gradient border border-info rounded">
+        <h4 class="text-center text-white">Realize seu cadastro!</h4>
+    <form onsubmit="return false">
+
+        <!-- CAMPO EMAIL CADASTRO -->
+        <div class="mb-3">
+            <label for="cadastroEmail" class="form-label text-light">Email:</label>
+            <input type="email" class="form-control" id="cadastroEmail" aria-describedby="emailHelp" placeholder="Digite seu email" name='email' required>
+            <div id="emailHelp" class="form-text text-light">Nunca compartilharemos seu e-mail com mais ninguém!</div>
+        </div>
+
+        <!-- CAMPO NOME DE USUARIO CADASTRO -->
+        <div class="mb-3">
+            <label for="cadastroUsuario" class="form-label text-light">Nome de usuário:</label>
+            <input type="text" class="form-control" id="cadastroUsuario" placeholder="Digite seu usuário" aria-label="Username" name='nome' required> 
+        </div>
+
+        <!-- CAMPO SENHA CADASTRO -->
+        <div class="mb-3">
+            <label for="cadastroSenha" class="form-label text-light">Senha:</label>
+            <input type="password" class="form-control" id="cadastroSenha" placeholder="Digite uma senha" name="senha" required>
+        </div>
+
+        <div>
+          <label for="cadastroObjetivo" class="form-label text-light">Objetivo: </label>
+          <input type="text" class="form-control" id="cadastroObjetivo" placeholder="Digite seu objetivo neste site:" name="cadastroObjetivo required">
+        </div>
+
+
+        <!-- CAMPO TERMOS DE USO CADASTRO -->
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="cadastroTermos" name='checkbox' required>
+            <label class="form-check-label text-light" for="cadastroTermos">Aceito os <a href="text/termos_de_uso.pdf" target="_blank">termos de uso</a>.</label>
+        </div>
+
+        <div class="text-center">
+            <!-- BOTAO SUBMIT CADASTRO -->
+            <button onclick="cadastrar()" id="cadastroSubmit" type="submit" class="btn btn-primary mb-4">Enviar</button>
+            
+          </div>
+        </form>
+        <div class="text-center">
+            <a class="cadastro-exists text-white" href="login">Já possui cadastro?</a>
+          </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="../static/javascript/getIP.js"></script>  
+    <script src="../static/javascript/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=], initial-scale=1.0">
+    <title>Portal estudantil: Feed</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  	<link rel="shortcut icon" href="../static/images/icon2.ico">
+    <link rel="stylesheet" href="../static/css/navbarfooter.css">
+</head>
+
+<body onload="exibirFeed(), exibirBotao()">
+
+    <nav class="navbar navbar-expand-lg bg-dark ">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/"><img src="../static/images/logo_nav.ico" alt="Icone da página"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                  <a class="nav-link active text-light" aria-current="page" href="/">Home</a>
+                </li>
+
+                <li id="botaoCadastro" class="nav-item" style="display: none;">
+                  <a class="nav-link text-light" href="cadastro">Cadastro/Login</a>
+                </li>
+
+                <li class="nav-item" id="botaoInserir" style="display: none;">
+                  <a class="nav-link text-light" href="inserir_conteudo">Cadastrar conteúdo</a>
+                </li>
+             
+            
+                <li id="botaoCadastro" class="nav-item" style="display: none;">
+                    <a class="nav-link text-light" href="cadastro">Cadastro/Login</a>
+                  </li>
+
+
+              <li class="nav-item" id='botaoPerfil' style="display: none;">
+                <a class="nav-link active text-light" href="/perfil">Perfil</a>
+              </li>
+
+            </ul>
+          </div>
+          <!-- END ITEMS NAVBAR -->
+        </div>
+        <!-- END CONTEINER FLUIDO -->
+      </nav>
+      <!-- END NAVBAR -->
+
+    <div class="text-center">
+        <h1>Atualizações mais recentes</h1>
+    </div>
+
+    <div class="h-100 w-100">
+        <div class="d-flex justify-content-center">
+            <div id="conteudo" class="w-50">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../static/javascript/getIP.js"></script>      
+<script src="../static/javascript/main.js"></script>
+<script src="../static/javascript/feed.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>

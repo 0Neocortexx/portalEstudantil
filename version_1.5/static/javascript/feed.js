@@ -14,7 +14,7 @@ function exibirFeed() {
         for (let i = resposta.length-1; i >= 0; i--) {
             console.log('Ta pedindo')
             document.getElementById('conteudo').innerHTML += 
-            `<div class="border border-info bg-dark bg-gradient p-3 rounded text-center text-light">
+            `<div class="feed border border-info bg-dark bg-gradient p-3 rounded text-center text-light">
                 <p>Matéria:  ${resposta[i].materia}</p> 
                 <p>Titulo: ${resposta[i].titulo}</p>
                 <p>Conteudo: ${resposta[i].conteudo}</p>

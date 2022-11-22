@@ -11,53 +11,55 @@ def cadastrar():
         try:
             resposta = jsonify({'resultado':'ok', 'detalhes': 'ok'})
             dados = request.get_json(force=True)
+            email = dados["email"]
+            email = email.lower()
+            user = Usuario(email =  email,nome = dados['nome'],senha = dados['senha'], objetivo = dados['objetivo'])
+            a = db.session.query(Usuario.email).filter_by(email = user.email).first()    
 
-            email = dados['email']
-            nome = dados['nome']
-            senha = dados['senha']
-            objetivo = dados['objetivo']
-
-            for f in filtro:
-                if f in email or f in nome or f in senha or f in objetivo:
-                    resposta = jsonify({'resultado':'injecao', 'detalhes': 'Não insira nenhum tipo de Injeção de código! Temos proteção :D'})
-                    resposta.headers.add('Access-Control-Allow-Origin', '*')
-                    return resposta
-            
-            if email == '' or nome == '' or senha == '' or objetivo == '':
-                    resposta = jsonify({'resultado': 'email_vazio','detalhes': 'Não deixe campos vazios'})
-                    resposta.headers.add('Access-Control-Allow-Origin', '*')
-                    return resposta
-                    
-            if '@' not in email or len(email) <= 6:
-                resposta = jsonify({'resultado':'email_invalido', 'detalhes':'Email Inválido!'})
-                resposta.headers.add('Access-Control-Allow-Origin', '*')
-                return resposta
-
-            if f in email or f in nome or f in senha or f in objetivo:
+            if verificar_campo(dados["email"], filtro) or verificar_campo(dados["nome"], filtro)\
+                or verificar_campo(dados["senha"], filtro) or verificar_campo(dados["objetivo"], filtro):
                 resposta = jsonify({'resultado':'injecao', 'detalhes': 'Não insira nenhum tipo de Injeção de código! Temos proteção :D'})
                 resposta.headers.add('Access-Control-Allow-Origin', '*')
                 return resposta
 
-            user = Usuario(email = email, nome = nome, senha = senha, objetivo = objetivo)
-
-            a = db.session.query(Usuario.email).filter_by(email = user.email).first()
-
-            if a is not None:
-                resposta = jsonify({'resultado':'usuario_ja_cadastrado', 'detalhes':'Email Já cadastrado!'})
+            elif "@" not in user.email: 
+                resposta = jsonify({'resultado':'invalido', 'detalhes': 'Email inválido!'})
+                resposta.headers.add('Access-Control-Allow-Origin', '*')
+                return resposta
+                
+            elif '' in user.email or '' in user.senha: 
+                resposta = jsonify({'resultado':'invalido', 'detalhes': 'Não deixe campos vazios!'})
                 resposta.headers.add('Access-Control-Allow-Origin', '*')
                 return resposta
 
-            user.senha = criptografar_sen(user.senha)
-
-            db.session.add(user) # Adiciona a pessoa no banco
-            db.session.commit() # Dá o commit no banco
-            print(user)
-            print('Usuário cadastrado!')
-            resposta = jsonify({'resultado': 'sucesso', 'detalhes': 'Usuário cadastrado!'})
+            elif len(user.name) < 4 or len(user.objetivo) < 4:
+                resposta = jsonify({'resultado':'pequeno', 'detalhes': 'É necessário nome ou objetivo maior que 4 caracteres!'})
+                resposta.headers.add('Access-Control-Allow-Origin', '*')
+                return resposta
+        
+            elif a is not None:
+                resposta = jsonify({'resultado':'usuario_ja_cadastrado', 'detalhes':'Email Já cadastrado!'})
+                resposta.headers.add('Access-Control-Allow-Origin', '*')
+                return resposta
+            
+            else:
+                user.senha = criptografar_sen(user.senha)
+                print(user)
+                db.session.add(user) # Adiciona a pessoa no banco
+                db.session.commit() # Dá o commit no banco
+                resposta = jsonify({'resultado': 'sucesso', 'detalhes': 'Usuário cadastrado!'})
+                resposta.headers.add('Access-Control-Allow-Origin', '*')
+                return resposta
 
         except Exception as e:
             resposta = jsonify({'resultado': 'erro', 'detalhes': str(e)})
             resposta.headers.add('Access-Control-Allow-Origin', '*')
-
         resposta.headers.add('Access-Control-Allow-Origin', '*')
         return resposta
+
+
+def verificar_campo(atributo: str, filtro: tuple) -> bool:
+    for f in filtro:
+        if  f in atributo:
+            return True
+    return False

@@ -57,3 +57,40 @@ class Conteudo(db.Model):
 
             "usuario_email": self.usuario_email
         }
+
+
+def criptografar_sen(senha: str):
+        """Criptografa a senha usando o bcrypt."""
+        senha = senha.encode('utf-8') # Deixa a senha no padrão utf-8.
+        nova_senha = bcrypt.hashpw(senha,bcrypt.gensalt()) # Gera a senha criptografada
+        senha = nova_senha
+        return senha
+
+filtro = ('alert.','<script>','<','>','javascript',';','--',",","=","+",'/',"'",'"',"src=","admin'--"
+            ,"or 1=1", "delete from user", "document.write","sessionStorage.","Window.","document.",'href=',"]>")
+
+
+def filtro(email: str):
+    for f in filtro: # laço de repetição que verifica se não há um texto suspeito de possuir injeção XSS ou SQL.
+        if f in email:
+            resposta = email.replace(f,'')
+    if resposta == '' and len(resposta)<=4 or '@' not in resposta:
+        resposta = None
+    return resposta
+
+def get_usuario(email: str):
+    return Usuario.query.get(email)
+
+def verificar_senha(senha_dig:str,email_dig:str):
+    # Percorre o banco para encontrar a senha correspondente ao email
+    for q in db.session.query(Usuario.senha).filter(Usuario.email==email_dig).all():
+        try:
+            resultado = bcrypt.checkpw(senha_dig,q[0])
+        except:
+            return False
+        if q == None:
+            return False
+        return resultado
+
+if __name__=="__main__":
+    db.create.all()

@@ -21,15 +21,17 @@ function cadastrar(){
             if (retorno.resultado === 'injecao') {
                 alert(retorno.detalhes);
                 window.location.reload(true);
-            } else if (retorno.resultado === 'email_invalido'){
+            } else if (retorno.resultado === 'vazio'){
                 alert(retorno.detalhes);
                 window.location.reload(true);
-            } else if (retorno.resultado === 'email_vazio') {
+            } else if (retorno.resultado === 'invalido') {
                 alert(retorno.detalhes);
             } else if (retorno.resultado === 'usuario_ja_cadastrado') {
                 alert(retorno.detalhes);
             } else if(checkbox == false) {
-                alert('Concorda com os termos ai miseravi')
+                alert('Concorde com os termos de compromisso!')
+            } else if(retorno.resultado ==='pequeno'){
+                alert(retorno.detalhes)
             } else {
                 alert(retorno.detalhes);
                 window.location.assign('/main');
